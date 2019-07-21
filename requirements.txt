@@ -1,0 +1,10 @@
+Flask
+Flask-OAuth
+flask-socketio
+requests
+httplib2
+apiclient
+google-api-python-client
+oauth2client
+rfc3339
+python-dateutil

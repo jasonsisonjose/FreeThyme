@@ -1,0 +1,393 @@
+body {
+    font-family: 'Montserrat', sans-serif;
+}
+a.change-hover-color:hover {
+    color: green !important;
+}
+
+/*
+=====
+LEVEL 1. RESET STYLES
+=====
+*/
+
+.field{
+  --uiFieldPlaceholderColor: var(--fieldPlaceholderColor, #767676);
+}
+
+.field__input{
+  background-color: transparent;
+  border-radius: 0;
+  border: none;
+
+  -webkit-appearance: none;
+  -moz-appearance: none;
+
+  font-family: inherit;
+  font-size: 1em;
+}
+
+.field__input:focus::-webkit-input-placeholder{
+  color: var(--uiFieldPlaceholderColor);
+}
+
+.field__input:focus::-moz-placeholder{
+  color: var(--uiFieldPlaceholderColor);
+  opacity: 1;
+}
+
+/*
+=====
+LEVEL 2. CORE STYLES
+=====
+*/
+
+.a-field{
+  display: inline-block;
+}
+
+.a-field__input{
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.a-field__input:focus{
+  outline: none;
+}
+
+/*
+=====
+LEVEL 3. PRESENTATION STYLES
+=====
+*/
+
+/* a-field */
+
+.a-field{
+  --uiFieldHeight: var(--fieldHeight, 40px);
+  --uiFieldBorderWidth: var(--fieldBorderWidth, 2px);
+  --uiFieldBorderColor: var(--fieldBorderColor);
+
+  --uiFieldFontSize: var(--fieldFontSize, 1em);
+  --uiFieldHintFontSize: var(--fieldHintFontSize, 1em);
+
+  --uiFieldPaddingRight: var(--fieldPaddingRight, 15px);
+  --uiFieldPaddingBottom: var(--fieldPaddingBottom, 15px);
+  --uiFieldPaddingLeft: var(--fieldPaddingLeft, 15px);
+
+  position: relative;
+  box-sizing: border-box;
+  font-size: var(--uiFieldFontSize);
+  padding-top: 1em;
+}
+
+.a-field .a-field__input{
+  height: var(--uiFieldHeight);
+  padding: 0 var(--uiFieldPaddingRight) 0 var(--uiFieldPaddingLeft);
+  border-bottom: var(--uiFieldBorderWidth) solid var(--uiFieldBorderColor);
+}
+
+.a-field .a-field__input::-webkit-input-placeholder{
+  opacity: 0;
+  transition: opacity .2s ease-out;
+}
+
+.a-field .a-field__input::-moz-placeholder{
+  opacity: 0;
+  transition: opacity .2s ease-out;
+}
+
+.a-field .a-field__input:not(:placeholder-shown) ~ .a-field__label-wrap .a-field__label{
+  opacity: 0;
+  bottom: var(--uiFieldPaddingBottom);
+}
+
+.a-field .a-field__input:focus::-webkit-input-placeholder{
+  opacity: 1;
+  transition-delay: .2s;
+}
+
+.a-field .a-field__input:focus::-moz-placeholder{
+  opacity: 1;
+  transition-delay: .2s;
+}
+
+.a-field .a-field__label-wrap{
+  box-sizing: border-box;
+  width: 100%;
+  height: var(--uiFieldHeight);
+
+  pointer-events: none;
+  cursor: text;
+
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+.a-field .a-field__label{
+  position: absolute;
+  left: var(--uiFieldPaddingLeft);
+  bottom: calc(50% - .5em);
+
+  line-height: 1;
+  font-size: var(--uiFieldHintFontSize);
+
+  pointer-events: none;
+  transition: bottom .2s cubic-bezier(0.9,-0.15, 0.1, 1.15), opacity .2s ease-out;
+  will-change: bottom, opacity;
+}
+
+.a-field .a-field__input:focus ~ .a-field__label-wrap .a-field__label{
+  opacity: 1;
+  bottom: var(--uiFieldHeight);
+}
+
+/* a-field_a1 */
+
+.a-field_a1 .a-field__input{
+  transition: border-color .2s ease-out;
+  will-change: border-color;
+}
+
+.a-field_a1 .a-field__input:focus{
+  border-color: var(--fieldBorderColorActive);
+}
+
+/* a-field_a2 */
+
+.a-field_a2 .a-field__label-wrap:after{
+  content: "";
+  box-sizing: border-box;
+  width: 0;
+  height: var(--uiFieldBorderWidth);
+  background-color: var(--fieldBorderColorActive);
+
+  position: absolute;
+  bottom: 0;
+  left: 0;
+
+  will-change: width;
+  transition: width .285s ease-out;
+}
+
+.a-field_a2 .a-field__input:focus ~ .a-field__label-wrap:after{
+  width: 100%;
+}
+
+/* a-field_a3 */
+
+.a-field_a3{
+  padding-top: 1.5em;
+}
+
+.a-field_a3 .a-field__label-wrap:after{
+  content: "";
+  box-sizing: border-box;
+  width: 100%;
+  height: 0;
+
+  opacity: 0;
+  border: var(--uiFieldBorderWidth) solid var(--fieldBorderColorActive);
+
+  position: absolute;
+  bottom: 0;
+  left: 0;
+
+  will-change: opacity, height;
+  transition: height .2s ease-out, opacity .2s ease-out;
+}
+
+.a-field_a3 .a-field__input:focus ~ .a-field__label-wrap:after{
+  height: 100%;
+  opacity: 1;
+}
+
+.a-field_a3 .a-field__input:focus ~ .a-field__label-wrap .a-field__label{
+  bottom: calc(var(--uiFieldHeight) + .5em);
+}
+
+/*
+=====
+LEVEL 4. SETTINGS
+=====
+*/
+
+.field{
+  --fieldBorderColor: #D1C4E9;
+  --fieldBorderColorActive: #673AB7;
+}
+
+
+
+:focus {
+  outline: none;
+}
+button {
+  font-family: 'Roboto', sans-serif;
+  font-weight: bold;
+  border: 3px solid #515151;
+  color: #515151;
+  position: relative;
+  margin: 2rem 3rem;
+  padding: 1rem 2rem;
+  font-size: 1.15rem;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+button::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: -.6rem;
+  top: -.5rem;
+  z-index: -1;
+  background-color: #9CB59D;
+  transition: all 200ms ease-out;
+}
+
+button:hover::before {
+  top: 0;
+  left: 0;
+}
+
+.button--bop:active {
+  transform: translateY(3px);
+}
+
+.button--flick:active {
+  animation: flick 640ms infinite;
+}
+
+.button--twist:active {
+  animation: twist 800ms infinite;
+}
+
+.button--spin:active {
+  animation: spin 800ms infinite;
+}
+
+@keyframes flick {
+  0% {
+    transform: translate(0, 0) rotate(0deg) scale(1);
+  }
+  67% {
+    transform: translate(.4rem, -1.8rem) rotate(160deg) scale(.4);
+  }
+  100% {
+    transform: translate(0, 0) rotate(0deg) scale(1);
+  }
+}
+
+@keyframes twist {
+  0% {
+    transform: rotate(0deg);
+  }
+  30% {
+    transform: rotate(60deg);
+  }
+  60% {
+    transform: rotate(-20deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+/* .square_btn{
+    position: relative;
+    display: inline-block;
+    font-weight: bold;
+    text-decoration: none;
+    color: #FFF;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.73);
+    padding: 0.5em 0.7em;
+    background: #9EEFBE;
+    border-top: solid 3px #00a3d4;
+    border-bottom: solid 3px #00a3d4;
+    transition: .4s;
+    border: 0;
+    box-shadow: none;
+    border-radius: 0px;
+}
+
+.square_btn:hover {
+    text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
+}
+ */
+
+.hf {
+font-family: 'Montserrat', sans-serif;
+}
+h1 {
+font-family: 'Playfair Display SC',serif;
+font-weight: 700;
+}
+
+.bouncy{
+ animation:bouncy 5s infinite linear;
+ position:relative;
+}
+@keyframes bouncy {
+ 0%{top:0em}
+ 40%{top:0em}
+ 43%{top:-0.9em}
+ 46%{top:0em}
+ 48%{top:-0.4em}
+ 50%{top:0em}
+ 100%{top:0em;}
+}
+
+/* for fade-in animation */
+#fade-in {
+    margin-top: 25px;
+    font-size: 21px;
+    text-align: center;
+    animation: fadein 2s;
+    -moz-animation: fadein 4s; /* Firefox */
+    -webkit-animation: fadein 4s; /* Safari and Chrome */
+    -o-animation: fadein 4s; /* Opera */
+}
+@keyframes fadein {
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+@-moz-keyframes fadein { /* Firefox */
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+@-webkit-keyframes fadein { /* Safari and Chrome */
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+@-o-keyframes fadein { /* Opera */
+    from {
+        opacity:0;
+    }
+    to {
+        opacity: 1;
+    }
+}

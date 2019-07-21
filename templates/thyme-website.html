@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <meta name="description" content="">
+      <meta name="author" content="">
+      <title>Free Thyme - Home</title>
+      <link rel="shortcut icon" type="image/png" href="../static/images/favicons/favicon.ico"/>
+      <link href="https://fonts.googleapis.com/css?family=Montserrat:300|Roboto:300i" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css?family=Playfair+Display+SC:700" rel="stylesheet">
+      <!-- Bootstrap core CSS -->
+      <link rel="stylesheet" href="../static/css/bootstrap.min.css"  type="text/css">
+      <!-- custom stylesheet -->
+      <link rel="stylesheet" href="../static/css/thyme-css.css" type="text/css">
+   </head>
+   <body>
+      <!-- Navigation -->
+      <nav class="hf navbar navbar-expand-lg navbar-light static-top">
+         <div class="container">
+            <a class="navbar-brand change-hover-color cl-effect-2" href="/"><img src="../static/images/thyme-logo-nbg-sm.png" alt="...">FREE THYME</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+               <ul class="navbar-nav ml-auto">
+                  <li class="nav-item active">
+                     <a class="nav-link" href="/">Home</a>
+                  </li>
+                  <li class="nav-item">
+                     <a class="nav-link" href="thyme-website-about.html">About</a>
+                  </li>
+                  <li class="nav-item">
+                     <a class="nav-link" href="thyme-website-contact.html">Contact</a>
+                  </li>
+               </ul>
+            </div>
+         </div>
+      </nav>
+      <!-- Page Content -->
+      <div id="fade-in" class="container text-center">
+      <div id="fade-in">
+         <!-- <p>placeholder for user emails</p> -->
+         <h1 class="my-2">Compare schedules, Find thyme</h1>
+      </div>
+
+      <div id="fade-in" class="container-fluid hf mx-4 mt-2 mb-4 text-center">
+        <p style="color:red">{{ error }}</p>
+        {% for email in emails %}
+        <p style="display: inline" class="mx-3">{{ email }}</p>
+        {% endfor %}
+        <h5 class="my-4">Optional Fields:</h5>
+         <form class="text-center" action="http://localhost:8080/add-calendar" method="POST" style="display:inline">
+            <label class="field a-field a-field_a1 page__field">
+            <input type="text" class="field__input a-field__input" placeholder="Default: 14" name="search">
+            <span class="a-field__label-wrap">
+            <span class="a-field__label text-center">Search range in days</span>
+            </span>
+            </label> <br><br>
+            <label class="field a-field a-field_a1 page__field">
+            <input type="text" class="field__input a-field__input" placeholder="Default: 3:00" name="thyme">
+            <span class="a-field__label-wrap">
+            <span class="a-field__label text-center">Thyme needed</span>
+            </span>
+            </label> <br><br>
+            <button type="submit" class="button--bop ml-2" value="submit" href="thyme-results.html" title="Find free thyme">ENTER
+            </button>
+         </form>
+         <form class="text-center" action="/add-calendar" style="display:inline">
+            <button type="submit" class="button--bop" value="+ Calendar" title="Add a new user's calendar">+ CALENDAR
+            </button>
+         </form>
+         <form class="text-center" action="/reset-calendar" style="display:inline">
+            <button type="submit" class="button--bop" value="Reset" title="Clear users and calendars">CLEAR DATA
+            </button>
+         </form>
+      </div>
+      <!-- Bootstrap core JavaScript -->
+      <script src="vendor/jquery/jquery.min.js"></script>
+      <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+   </body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <title>Free Thyme - Home</title>
+  <link rel="shortcut icon" type="image/png" href="../static/images/favicons/favicon.ico"/>
+<link href="https://fonts.googleapis.com/css?family=Montserrat:300|Roboto:300i" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Playfair+Display+SC:700" rel="stylesheet">
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="../static/css/bootstrap.min.css"  type="text/css">
+  <!-- custom stylesheet -->
+  <link rel="stylesheet" href="../static/css/thyme-css.css" type="text/css">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="hf navbar navbar-expand-lg navbar-light static-top">
+    <div class="container">
+      <a class="navbar-brand change-hover-color cl-effect-2" href="/"><img src="../static/images/thyme-logo-nbg-sm.png" alt="...">FREE THYME</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="/">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="thyme-website-about.html">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="thyme-website-contact.html">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+
+  <!-- Page Content -->
+  <div class="container hf">
+    <div class="row">
+      <div class="col-lg-12 text-center">
+        {% for email in emails %}
+        <h3 style="color: #82B496">{{ email }}</h3>
+        {% endfor %}
+        <div id="test">
+            <h1 class="mb-4">This is when you all have free thyme in the next <span style="color: #82B496">{{ days }}</span> days.</h1>
+            <h2 class="my-4">Everyone has at least <span style="color: #82B496">{{ minutes }} </span> minutes of free during the following thymes.</h2>
+        {% for thyme in freeThymes %}
+            <h2 class="mb-4">{{ thyme }}</h2>
+        {% endfor %}
+      </div>
+      </div>
+    </div>
+  </div>
+<button class="button--bop ml-2" value="submit" href="thyme-results.html" title="RETURN HOME"><a href="thyme-website.html">HOME</a></button>
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>
