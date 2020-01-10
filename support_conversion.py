@@ -48,22 +48,22 @@ def convertTimetoMinute(timeLength):
             minutes = 0
     return(hours*60 + int(minutes))
 
-#Function to convert tring to dateTime
+#Function to convert string to dateTime
 def convertDateTime(inputString):
     #parses the first event by "T"
     #so day1 = YEAR-MONTH-DAY, and wholetime = HOUR:MINUTES:SECONDS-TIMEZONE
     date, wholeTime = inputString.split('T')
-    
+
     year, month, day = date.split("-")
-    
+
     #using the whole time we parse it by the "-" symbol meaning that
     #time1 = HOURS:MINUTES:SECONDS, and timezone1 = TIMEZONE
     time, timezone = wholeTime.split("-")
-    
+
     #now that we have the time format as HOUR:MINUTES:SECONDS
-    #we can once again parse it to get the HOURs, MINUTEs, and SECONDs 
-    #and store them in dedicated variables 
-    #hour1 = hours, minutes1 = minutes, seconds1 = seconds, 
+    #we can once again parse it to get the HOURs, MINUTEs, and SECONDs
+    #and store them in dedicated variables
+    #hour1 = hours, minutes1 = minutes, seconds1 = seconds,
     hour, minutes, seconds= time.split(":")
     #we must convert the parsed quantities into integers so that
     #they can be used by the "timedelta" function
@@ -73,11 +73,12 @@ def convertDateTime(inputString):
     hour = int(hour)
     minute = int(minutes)
     second = int(seconds)
-    
+
     outputDateTime = datetime(year, month, day, hour, minute, second)
-    
+
     return outputDateTime
 
+# LEGACY GOOGLE FUNCTION
 #Function that converts datetime objects to google api time format
 def convertDateTimeToGoogle(dateTime, _timezone = ["America/Los_Angeles","07:00"]):
     year = dateTime.year
@@ -88,5 +89,5 @@ def convertDateTimeToGoogle(dateTime, _timezone = ["America/Los_Angeles","07:00"
     second = dateTime.second
     #Format '2019-05-01T03:00:00-07:00'
     outputString = f"{year:04d}-{month:02d}-{day:02d}T{hour:02d}:{minute:02d}:{second:02d}-{_timezone[1]}"
-    
+
     return str(outputString)

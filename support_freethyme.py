@@ -10,6 +10,7 @@ def sortSchedule(bigSchedule):
     startTimeList = []
     endTimeList = []
     for x in bigSchedule:
+        print("You know im your type: ", type(x["start"]))
         startTimeList.append(convertDateTime(x["start"]))
         endTimeList.append(convertDateTime(x["end"]))
     startTimeList.sort()
@@ -26,29 +27,30 @@ def unavailableTime(_days,_sHr=0,_sMin=00,_eHr=9,_eMin=00):
     #input an int of days
     unavailableTimeList = []
     for x in range(_days):
-       timeDeltaDays = timedelta(days = x) 
+       timeDeltaDays = timedelta(days = x)
 
        currentDay = datetime.now()
 
        currentDate = datetime(year = currentDay.year, month = currentDay.month, day=currentDay.day, hour=_sHr, minute=_sMin)
        currentDate = currentDate + timeDeltaDays
-       startUn = convertDateTimeToGoogle(currentDate)
+       startUn = currentDate.isoformat() + 'Z'
 
        currentDate = datetime(year = currentDay.year, month = currentDay.month, day=currentDay.day, hour=_eHr, minute=_eMin)
        currentDate = currentDate + timeDeltaDays
-       endUn = convertDateTimeToGoogle(currentDate)
+       endUn = currentDate.isoformat() + 'Z'
 
        unavailableTimeList.append({"start":startUn,"end":endUn})
     return unavailableTimeList
 
-#Functions that add time scans    
+#Functions that add time scans
 def addTimeScan(_days,_eHr = 9,_eMin = 00):
-    timeDeltaDays = timedelta(days = _days) 
+    timeDeltaDays = timedelta(days = _days)
     timeScan = datetime.now() + timeDeltaDays
     timeScan.replace(hour = _eHr)
     timeScan.replace(minute = _eMin)
-    timeScan = convertDateTimeToGoogle(timeScan)
-    return timeScan
+    # we don't need to use the convertDateTimeToGoogle function anymore
+    # we can just use .isoformat() + 'Z' to get the same effect
+    return timeScan.isoformat() + 'Z'
 
 #Given sorted schedule and minimum appointment length find FreeThyme
 def findFreeThyme(eventList, appointmentLength):
@@ -63,11 +65,9 @@ def findFreeThyme(eventList, appointmentLength):
 
 #Function to find difference in time
 def findDiffTime(event1, event2):
-    
+
     eventdelta1 = (event1["end"])
     eventdelta2 = (event2["start"])
 
     lengthOfFreeThyme = eventdelta2 - eventdelta1
     return [lengthOfFreeThyme, event1["end"], event2["start"]]
-
-    
